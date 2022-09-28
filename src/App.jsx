@@ -28,7 +28,7 @@ const Questions = () => {
 		getQuestions()
 	}, [])
 	return <div className='questions'>
-		{questions.map(question => <Question question={question}/>)}
+		{questions.map(question => <Question key={question.id} question={question}/>)}
 	</div>
 } 
 
