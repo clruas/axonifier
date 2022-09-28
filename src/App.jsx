@@ -1,7 +1,7 @@
 function App() {
 	return (
 		<div className="App">
-			<h1>Axonifier </h1>
+			<h1>Axonifier 3.0</h1>
 		</div>
 	)
 }
