@@ -1,7 +1,26 @@
+import { useState, useEffect } from 'react'
+import { supabase } from './client'
+
 function App() {
+	const [questions, setQuestions] = useState([])
+	useEffect(()=>{
+		async function getQuestions(){
+			let { data: questions, error } = await supabase
+  				.from('questions')
+  				.select('*')
+			setQuestions(questions)
+		}
+		getQuestions()
+	}, [])
 	return (
 		<div className="App">
 			<h1>Axonifier 3.0</h1>
+			{questions.map(item=>{
+				return <div key={item.id} className='questions'>
+					<div className='text'>{item.question}</div>
+					<div className='answer'>{item.answer}</div>
+				</div>
+			})}
 		</div>
 	)
 }
