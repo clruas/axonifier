@@ -1,7 +1,22 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './client'
 
-function App() {
+const Question = ({ question }) => {
+	console.log(question)
+	const { statement, answer } = question
+	return <div className='question'>
+		<div className='statement'>
+			<span>Pergunta:</span>
+			<p>{statement}</p>
+		</div>
+		<div className='answer'>
+			<span>Resposta:</span>
+			<p>{answer}</p>
+		</div>
+	</div>
+}
+
+const Questions = () => {
 	const [questions, setQuestions] = useState([])
 	useEffect(()=>{
 		async function getQuestions(){
@@ -12,15 +27,17 @@ function App() {
 		}
 		getQuestions()
 	}, [])
+	return <div className='questions'>
+		{questions.map(question => <Question question={question}/>)}
+	</div>
+} 
+
+function App() {
+	
 	return (
 		<div className="App">
 			<h1>Axonifier 3.0</h1>
-			{questions.map(item=>{
-				return <div key={item.id} className='questions'>
-					<div className='text'>{item.question}</div>
-					<div className='answer'>{item.answer}</div>
-				</div>
-			})}
+			<Questions />
 		</div>
 	)
 }
