@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './client'
 import './app.sass'
+import InsertQuestion from './components/InsertQuestion'
+import { RecoilRoot } from 'recoil'
+import Questions from './components/Questions'
+import SearchQuestion from './components/SearchQuestion'
 
 const Question = ({ question }) => {
 	const { id, statement, answer, created_at } = question
 	return <div className='question'>
-		<div>{id}</div>
+		<div>#{id}</div>
 		<div>{new Date(created_at).toLocaleString()}</div>
 		<div className='statement'>
 			<span>Pergunta:</span>
@@ -19,7 +23,7 @@ const Question = ({ question }) => {
 	</div>
 }
 
-const Questions = ({ questions }) => {
+const Questions1 = ({ questions }) => {
 	const [filterText, setFilterText] = useState('')
 	let filteredQuestions = questions.filter(question => question.statement.toLowerCase().includes(filterText.toLowerCase()))
 	return <div className='questions'>
@@ -33,7 +37,7 @@ const Questions = ({ questions }) => {
 	</div>
 }
 
-const InsertQuestion = ({ onChange }) => {
+const InsertQuestion1 = ({ onChange }) => {
 	const [question, setQuestion] = useState({ statement: '', answer: '' })
 	const { statement, answer } = question
 	const handleClick = e => {
@@ -66,8 +70,8 @@ function App() {
 	const [update, setUpdate] = useState(false)
 	async function getQuestions(){
 		let { data: questions, error } = await supabase
-			  .from('questions')
-			  .select('*')
+			.from('questions')
+			.select('*')
 			.order('id', { ascending: false })
 		setQuestions(questions)
 	}
@@ -75,11 +79,16 @@ function App() {
 		getQuestions()
 	}, [])
 	return (
-		<div className="App">
-			<h1>Axonifier 3.0</h1>
-			<InsertQuestion onChange={e => getQuestions()} />
-			<Questions questions={questions} />
-		</div>
+		<RecoilRoot>
+			<div className="app">
+				<div className='header'>
+					<h1>Axonifier 3.0</h1>
+				</div>
+				<InsertQuestion />
+				<SearchQuestion />
+				<Questions />
+			</div>
+		</RecoilRoot>
 	)
 }
 export default App
