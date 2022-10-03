@@ -12,7 +12,7 @@ const Question = ({ question }) => {
 				.from('questions')
 				.delete()
 				.eq('id', id)
-			const newQuestions = questions.filter(quest => quest.id != data.id)
+			const newQuestions = questions.filter(quest => quest.id != id)
 			setQuestions(newQuestions)
 		}
 		remove()

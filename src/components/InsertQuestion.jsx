@@ -11,7 +11,7 @@ const InsertQuestion = () => {
 	function saveQuestion(){
 		async function createQuestion(){
 			const { data, error } = await supabase.from('questions').insert([{ statement, answer }]).single()
-			setQuestionState( state => [data, ...state])
+			setQuestionState(state => [data, ...state])
 			cancelInsert()
 		}
 		createQuestion()
