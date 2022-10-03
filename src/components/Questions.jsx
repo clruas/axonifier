@@ -48,7 +48,12 @@ const Questions = () => {
     }, [])
 
     return <div className="questions">
-		{filteredQuestions.map(question => <Question key={question.id} question={question}/>)}
+		<div className="summary">
+			{filteredQuestions.length} questions listed.
+		</div>
+		<div className="items">
+			{filteredQuestions.map(question => <Question key={question.id} question={question}/>)}
+		</div>
     </div>
 }
 export default Questions
