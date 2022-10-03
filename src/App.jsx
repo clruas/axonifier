@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react'
-import { supabase } from './client'
-import './app.sass'
-import InsertQuestion from './components/InsertQuestion'
 import { RecoilRoot } from 'recoil'
+import InsertQuestion from './components/InsertQuestion'
 import Questions from './components/Questions'
 import SearchQuestion from './components/SearchQuestion'
+import './app.sass'
 
 function App() {
 	return (
