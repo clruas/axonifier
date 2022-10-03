@@ -18,17 +18,15 @@ const Question = ({ question }) => {
 		remove()
 	}
 	return <div className='question'>
-		<div>#{id}</div>
-		<div>{new Date(created_at).toLocaleString()}</div>
 		<div className='statement'>
-			<span>Pergunta:</span>
 			<p style={{ whiteSpace: 'pre-line' }}>{statement}</p>
 		</div>
 		<div className='answer'>
-			<span>Resposta:</span>
 			<p style={{ whiteSpace: 'pre-line' }}>{answer}</p>
 		</div>
 		<div className="actions">
+			<div>#{id}</div>
+			<div>{new Date(created_at).toLocaleString()}</div>
 			<button onClick={removeQuestion}>Remove</button>
 		</div>
 	</div>

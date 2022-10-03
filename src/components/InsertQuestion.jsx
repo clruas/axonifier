@@ -24,28 +24,32 @@ const InsertQuestion = () => {
 		{
 			mode == 'insert'
 			? <>
-				<div className="control">
-					<label htmlFor="statement">Pergunta:</label>
-					<textarea 
-						id="statement" 
-						value={statement} 
-						onChange={({ target })=>setQuestion({ ...question, statement: target.value })}
-					></textarea>
+				<div className="inputs">
+					<div className="control">
+						<label htmlFor="statement">Pergunta:</label>
+						<textarea 
+							id="statement" 
+							value={statement} 
+							onChange={({ target })=>setQuestion({ ...question, statement: target.value })}
+						></textarea>
+					</div>
+					<div className="control">
+						<label htmlFor="answer">Resposta:</label>
+						<textarea 
+							id="answer" 
+							value={answer}
+							onChange={({ target })=>setQuestion({ ...question, answer: target.value })}
+						></textarea>
+					</div>
 				</div>
-				<div className="control">
-					<label htmlFor="answer">Resposta:</label>
-					<textarea 
-						id="answer" 
-						value={answer}
-						onChange={({ target })=>setQuestion({ ...question, answer: target.value })}
-					></textarea>
+				<div className="buttons">
+					<button onClick={saveQuestion}>Save question</button>
+					<button onClick={cancelInsert}>Cancel</button>
 				</div>
-				<button onClick={saveQuestion}>Save question</button>
-				<button onClick={cancelInsert}>Cancel</button>
 			</>
-			: <>
+			: <div className="buttons">
 				<button onClick={e => setMode('insert')}>New question</button>
-			</>
+			</div>
 		}
 	</div>
 }

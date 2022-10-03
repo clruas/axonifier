@@ -9,7 +9,7 @@ function App() {
 		<RecoilRoot>
 			<div className="app">
 				<div className='header'>
-					<h1>Axonifier 3.0</h1>
+					Axonifier 3.0
 				</div>
 				<InsertQuestion />
 				<SearchQuestion />

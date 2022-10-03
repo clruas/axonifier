@@ -3,3 +3,60 @@
     margin: 0
     padding: 0
     font-family: "Roboto"
+    outline: none
+html
+    font-size: 62.5%
+body
+    font-size: 1.6rem
+    background-color: #f0f0f0
+.app
+    height: 100vh
+    .header
+        background-color: lightblue
+        padding: 5px 5px
+    .question-form
+        background-color: lightblue
+        display: flex
+        flex-direction: column
+        padding: 0 5px 5px
+        .control
+            label
+                display: block
+                font-size: 1.2rem
+            textarea
+                width: 100%
+        .buttons
+            display: flex
+            gap: 5px
+            button
+                flex: 1 1 auto
+                padding: 5px
+    .question-search
+        background-color: lightblue
+        display: flex
+        padding: 0 5px 5px
+        input[type='search']
+            flex: 1 0 auto
+            padding: 5px
+    .questions
+        background-color: lightblue
+        overflow-y: scroll
+        height: calc(100vh - 200px)
+        padding: 0 5px
+        .question
+            background-color: white
+            margin-bottom: 5px
+            .statement
+                font-size: 1.4rem
+                color: #333
+                padding: 5px
+            .answer
+                font-size: 1.2rem
+                color: #999
+                padding: 5px
+            .actions
+                padding: 5px
+                color: #aaa
+                font-size: 1.2rem
+                display: flex
+                justify-content: space-between
