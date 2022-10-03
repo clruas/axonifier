@@ -5,7 +5,6 @@ export const QuestionState = atom({
     default: []
 })
 
-
 export const SearchQuestionState = atom({
     key: 'SearchQuestionState',
     default: ''

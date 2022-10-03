@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useSetRecoilState } from "recoil"
 import { supabase } from '../client'
 import { QuestionState } from '../database/store'
-import Button from "./Button"
 
 const InsertQuestion = () => {
 	const setQuestionState = useSetRecoilState(QuestionState)
