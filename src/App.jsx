@@ -4,6 +4,12 @@ import Questions from './components/Questions'
 import SearchQuestion from './components/SearchQuestion'
 import './app.sass'
 
+/*
+[ ] adicionar categoria, tema e nivel da pergunta
+[ ] opção de editar perguntas
+[ ] inserir sumario de perguntas (quantidade de perguntas listadas)
+*/
+
 function App() {
 	return (
 		<RecoilRoot>
