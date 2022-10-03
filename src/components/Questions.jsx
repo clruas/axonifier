@@ -36,6 +36,7 @@ const Questions = () => {
     const [questions, setQuestions] = useRecoilState(QuestionState)
     const searchText = useRecoilValue(SearchQuestionState)
     let filteredQuestions = questions.filter(question => question.statement.toLowerCase().includes(searchText.toLowerCase()))
+	const { length } = filteredQuestions
     async function getQuestions(){
 		let { data: questions, error } = await supabase
 			.from('questions')
@@ -49,7 +50,7 @@ const Questions = () => {
 
     return <div className="questions">
 		<div className="summary">
-			{filteredQuestions.length} questions listed.
+			{length} {length > 1 ? "questions" : "question"} listed.
 		</div>
 		<div className="items">
 			{filteredQuestions.map(question => <Question key={question.id} question={question}/>)}
