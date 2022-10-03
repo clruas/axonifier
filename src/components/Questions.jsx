@@ -4,7 +4,19 @@ import { supabase } from '../client'
 import { QuestionState, SearchQuestionState } from "../database/store"
 
 const Question = ({ question }) => {
+	const [questions, setQuestions] = useRecoilState(QuestionState)
 	const { id, statement, answer, created_at } = question
+	function removeQuestion(){
+		async function remove(){
+			const { data, error } = await supabase
+				.from('questions')
+				.delete()
+				.eq('id', id)
+			const newQuestions = questions.filter(quest => quest.id != data.id)
+			setQuestions(newQuestions)
+		}
+		remove()
+	}
 	return <div className='question'>
 		<div>#{id}</div>
 		<div>{new Date(created_at).toLocaleString()}</div>
@@ -16,7 +28,9 @@ const Question = ({ question }) => {
 			<span>Resposta:</span>
 			<p style={{ whiteSpace: 'pre-line' }}>{answer}</p>
 		</div>
-		<hr/>
+		<div className="actions">
+			<button onClick={removeQuestion}>Remove</button>
+		</div>
 	</div>
 }
 

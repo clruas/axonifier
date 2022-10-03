@@ -7,7 +7,7 @@ const SearchQuestion = () => {
     return <div className='question-search'>
         <input 
             type="search" 
-            placeholder='Pesquisar' 
+            placeholder='Search question...' 
             value={search} 
             onChange={ e => setSearch(e.target.value) }
         />
